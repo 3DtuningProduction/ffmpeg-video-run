@@ -10,4 +10,4 @@ RUN pip install awscli
 
 WORKDIR /tmp/workdir
 
-ENTRYPOINT ffmpeg ${cmd}
+ENTRYPOINT ffmpeg -i ${INPUT_VIDEO_FILE_URL} -ss ${POSITION_TIME_DURATION} -vframes 1 -vcodec png -an -y ${OUTPUT_THUMBS_FILE_NAME} && ./copy_thumbs.sh
